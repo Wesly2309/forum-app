@@ -10,6 +10,15 @@ use Illuminate\Http\Request;
 
 class FeedController extends Controller
 {
+
+    public function index()
+    {
+        $feeds = Feed::with('user')->latest()->get();
+        return response([
+            'feeds' => $feeds
+        ], 200);
+    }
+    
     public function store(PostRequest $request)
     {
         $request->validated();
