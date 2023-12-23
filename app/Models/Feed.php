@@ -32,4 +32,10 @@ class Feed extends Model
     {
         return (bool) $this->likes()->where('feed_id', $this->id)->where('user_id', auth()->id())->exists();
     }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
+        
 }
